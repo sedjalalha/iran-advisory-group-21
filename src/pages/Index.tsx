@@ -94,7 +94,7 @@ const Index = () => {
                   Explore Our Services <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link to="/contact" className="inline-flex items-center gap-2 border border-primary-foreground/30 text-primary-foreground px-6 py-3 text-sm font-sans font-medium tracking-wide hover:border-sand hover:text-sand transition-colors">
-                  Start a Conversation
+                  Request a Consultation
                 </Link>
               </motion.div>
             </motion.div>
