@@ -138,6 +138,12 @@ const Navbar = () => {
                 </AnimatePresence>
               </div>
             ))}
+            <Link
+              to="/contact"
+              className="ml-2 inline-flex items-center px-5 py-2.5 bg-primary text-primary-foreground text-xs font-sans font-medium tracking-[0.1em] uppercase hover:bg-navy-light transition-colors"
+            >
+              Request a Consultation
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
