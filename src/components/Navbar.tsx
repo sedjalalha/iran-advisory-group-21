@@ -210,6 +210,14 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
+              <div className="pt-4 mt-2 border-t border-border">
+                <Link
+                  to="/contact"
+                  className="block w-full text-center px-5 py-3 bg-primary text-primary-foreground text-xs font-sans font-medium tracking-[0.1em] uppercase hover:bg-navy-light transition-colors"
+                >
+                  Request a Consultation
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}
