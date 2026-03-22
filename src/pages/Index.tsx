@@ -8,13 +8,15 @@ import heroOil from "@/assets/hero-oil.jpg";
 import heroAgriculture from "@/assets/hero-agriculture.jpg";
 import heroTourism from "@/assets/hero-tourism.jpg";
 import heroTechnology from "@/assets/hero-technology.jpg";
+import heroShipping from "@/assets/hero-shipping.jpg";
 
 const heroSlides = [
   { image: heroBazaar, alt: "Iranian bazaar and local commerce" },
   { image: heroOil, alt: "Oil and petrochemical industry" },
-  { image: heroAgriculture, alt: "Iranian agriculture and farmlands" },
-  { image: heroTourism, alt: "Persian architecture and tourism" },
-  { image: heroTechnology, alt: "Technology and innovation in Iran" },
+  { image: heroAgriculture, alt: "Modern agriculture and farming" },
+  { image: heroTourism, alt: "Persepolis and Iranian tourism" },
+  { image: heroTechnology, alt: "Technology exhibitions and innovation" },
+  { image: heroShipping, alt: "Shipping, ports and international trade" },
 ];
 
 const fadeUp = {
