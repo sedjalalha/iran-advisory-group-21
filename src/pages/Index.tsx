@@ -1,8 +1,21 @@
-import { motion } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Shield, Users, Briefcase, Globe, Search } from "lucide-react";
 import Layout from "@/components/Layout";
-import heroImage from "@/assets/hero-iran.jpg";
+import heroBazaar from "@/assets/hero-bazaar.jpg";
+import heroOil from "@/assets/hero-oil.jpg";
+import heroAgriculture from "@/assets/hero-agriculture.jpg";
+import heroTourism from "@/assets/hero-tourism.jpg";
+import heroTechnology from "@/assets/hero-technology.jpg";
+
+const heroSlides = [
+  { image: heroBazaar, alt: "Iranian bazaar and local commerce" },
+  { image: heroOil, alt: "Oil and petrochemical industry" },
+  { image: heroAgriculture, alt: "Iranian agriculture and farmlands" },
+  { image: heroTourism, alt: "Persian architecture and tourism" },
+  { image: heroTechnology, alt: "Technology and innovation in Iran" },
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -28,12 +41,34 @@ const sectors = [
 ];
 
 const Index = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
+
   return (
     <Layout>
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Iran skyline" className="w-full h-full object-cover" />
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentSlide}
+              src={heroSlides[currentSlide].image}
+              alt={heroSlides[currentSlide].alt}
+              className="w-full h-full object-cover absolute inset-0"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+            />
+          </AnimatePresence>
           <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-primary/30" />
         </div>
         <div className="relative section-padding pb-16 md:pb-24 w-full">
@@ -61,6 +96,17 @@ const Index = () => {
                 </Link>
               </motion.div>
             </motion.div>
+            {/* Slide indicators */}
+            <div className="flex gap-2 mt-10">
+              {heroSlides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentSlide(i)}
+                  className={`h-0.5 transition-all duration-500 ${i === currentSlide ? "w-8 bg-sand" : "w-4 bg-primary-foreground/30 hover:bg-primary-foreground/50"}`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
