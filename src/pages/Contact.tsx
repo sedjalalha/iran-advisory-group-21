@@ -17,9 +17,9 @@ const reassurances = [
 ];
 
 const offices = [
-  { city: "Tehran", role: "Primary in-country team", note: "Operating base for delivery and access" },
-  { city: "Dubai", role: "Cross-border coordination", note: "Client-facing hub for the region" },
-  { city: "London", role: "European liaison", note: "Engagement with EU and UK clients" },
+  { city: "Tehran", role: "Headquarters", address: "No. 12, 4th Floor, Golestan Complex, Valiasr Ave, Tehran 15146, Iran", note: "Primary operating base for delivery and in-country access" },
+  { city: "Muscat", role: "Regional Office", address: "Al Khuwair 166, Muscat, Sultanate of Oman", note: "Cross-border coordination hub for the GCC region" },
+  { city: "Turin", role: "European Office", address: "Via Genoa 15, 10126 Turin, Italy", note: "Engagement hub for EU and UK clients" },
 ];
 
 const Contact = () => {
@@ -188,7 +188,8 @@ const Contact = () => {
                 <MapPin className="w-4 h-4 text-sand mb-4" strokeWidth={1.5} />
                 <h3 className="text-xl font-serif font-semibold text-primary">{o.city}</h3>
                 <p className="mt-2 text-sm font-sans text-charcoal">{o.role}</p>
-                <p className="mt-3 text-xs font-sans text-muted-foreground tracking-wide">{o.note}</p>
+                <p className="mt-3 text-xs font-sans text-muted-foreground tracking-wide leading-relaxed">{o.address}</p>
+                <p className="mt-2 text-xs font-sans text-muted-foreground/60 tracking-wide">{o.note}</p>
               </motion.div>
             ))}
           </div>
