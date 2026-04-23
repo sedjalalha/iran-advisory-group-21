@@ -7,41 +7,73 @@
 @layer base {
   :root {
     /* ============================================================
-       ACTIVE PALETTE — Forest Green + Cream
+       ACTIVE PALETTE — Burgundy + Blush (luxe & editorial)
        To switch palettes, comment this block and uncomment another below.
        ============================================================ */
-    --background: 60 20% 97%;
-    --foreground: 155 35% 14%;
+    --background: 20 30% 97%;
+    --foreground: 350 35% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 155 35% 14%;
+    --card-foreground: 350 35% 18%;
 
-    --popover: 60 20% 97%;
-    --popover-foreground: 155 35% 14%;
+    --popover: 20 30% 97%;
+    --popover-foreground: 350 35% 18%;
 
-    /* Deep forest green */
-    --primary: 155 38% 20%;
-    --primary-foreground: 60 20% 97%;
+    /* Deep burgundy */
+    --primary: 350 45% 28%;
+    --primary-foreground: 20 30% 97%;
 
-    /* Warm cream-gold accent */
-    --secondary: 38 55% 70%;
-    --secondary-foreground: 155 38% 16%;
+    /* Soft blush accent */
+    --secondary: 12 45% 82%;
+    --secondary-foreground: 350 45% 22%;
 
-    --muted: 80 14% 93%;
-    --muted-foreground: 155 12% 38%;
+    --muted: 20 18% 93%;
+    --muted-foreground: 350 12% 42%;
 
-    --accent: 38 55% 70%;
-    --accent-foreground: 155 38% 16%;
+    --accent: 12 45% 82%;
+    --accent-foreground: 350 45% 22%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 80 12% 88%;
-    --input: 80 12% 88%;
-    --ring: 155 38% 20%;
+    --border: 20 14% 88%;
+    --input: 20 14% 88%;
+    --ring: 350 45% 28%;
 
     --radius: 0.25rem;
 
+    --navy: 350 45% 28%;
+    --navy-light: 350 32% 40%;
+    --navy-muted: 350 20% 52%;
+    --sand: 12 45% 82%;
+    --sand-light: 14 50% 90%;
+    --cream: 20 30% 97%;
+    --cream-dark: 20 22% 94%;
+    --stone: 20 16% 91%;
+    --stone-light: 20 24% 96%;
+    --warm-white: 20 35% 99%;
+    --charcoal: 350 20% 26%;
+
+    /* ============================================================
+       OPTION A — Forest Green + Cream
+       ------------------------------------------------------------
+    --background: 60 20% 97%;
+    --foreground: 155 35% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 155 35% 14%;
+    --popover: 60 20% 97%;
+    --popover-foreground: 155 35% 14%;
+    --primary: 155 38% 20%;
+    --primary-foreground: 60 20% 97%;
+    --secondary: 38 55% 70%;
+    --secondary-foreground: 155 38% 16%;
+    --muted: 80 14% 93%;
+    --muted-foreground: 155 12% 38%;
+    --accent: 38 55% 70%;
+    --accent-foreground: 155 38% 16%;
+    --border: 80 12% 88%;
+    --input: 80 12% 88%;
+    --ring: 155 38% 20%;
     --navy: 155 38% 20%;
     --navy-light: 155 28% 32%;
     --navy-muted: 155 18% 46%;
@@ -53,6 +85,7 @@
     --stone-light: 60 18% 95%;
     --warm-white: 60 25% 99%;
     --charcoal: 155 18% 22%;
+       ============================================================ */
 
     /* ============================================================
        OPTION B — Slate Blue + Apricot (light & modern)
@@ -87,38 +120,6 @@
     --charcoal: 215 24% 28%;
        ============================================================ */
 
-    /* ============================================================
-       OPTION C — Burgundy + Blush (luxe & editorial)
-       ------------------------------------------------------------
-    --background: 20 30% 97%;
-    --foreground: 350 35% 18%;
-    --card: 0 0% 100%;
-    --card-foreground: 350 35% 18%;
-    --popover: 20 30% 97%;
-    --popover-foreground: 350 35% 18%;
-    --primary: 350 45% 28%;
-    --primary-foreground: 20 30% 97%;
-    --secondary: 12 45% 82%;
-    --secondary-foreground: 350 45% 22%;
-    --muted: 20 18% 93%;
-    --muted-foreground: 350 12% 42%;
-    --accent: 12 45% 82%;
-    --accent-foreground: 350 45% 22%;
-    --border: 20 14% 88%;
-    --input: 20 14% 88%;
-    --ring: 350 45% 28%;
-    --navy: 350 45% 28%;
-    --navy-light: 350 32% 40%;
-    --navy-muted: 350 20% 52%;
-    --sand: 12 45% 82%;
-    --sand-light: 14 50% 90%;
-    --cream: 20 30% 97%;
-    --cream-dark: 20 22% 94%;
-    --stone: 20 16% 91%;
-    --stone-light: 20 24% 96%;
-    --warm-white: 20 35% 99%;
-    --charcoal: 350 20% 26%;
-       ============================================================ */
 
 
     --sidebar-background: 216 50% 11%;
