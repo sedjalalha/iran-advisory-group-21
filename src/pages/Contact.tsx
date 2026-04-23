@@ -134,7 +134,7 @@ const Contact = () => {
       </section>
 
       {/* Form + direct */}
-      <section className="section-padding py-20 md:py-28 bg-warm-white">
+      <section className="section-padding py-20 md:py-28 bg-stone-light">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
             {/* Direct contact */}
@@ -147,7 +147,7 @@ const Contact = () => {
                 Whether you are exploring the Iranian market for the first time or evaluating a specific opportunity, we are happy to listen and advise on next steps.
               </p>
 
-              <div className="border-t border-border">
+              <div className="mt-2 border-t border-border/80">
                 <div className="border-b border-border py-6 flex gap-4 items-start">
                   <Mail className="w-5 h-5 text-sand shrink-0 mt-1" strokeWidth={1.5} />
                   <div>
@@ -178,11 +178,11 @@ const Contact = () => {
             </div>
 
             {/* Form */}
-            <div className="lg:col-span-7">
-              <div className="mb-8">
+            <div className="lg:col-span-7 bg-warm-white border border-border/80 shadow-[0_10px_30px_rgba(15,23,42,0.08)] p-6 md:p-8 lg:p-10">
+              <div className="mb-8 border-b border-border/70 pb-6">
                 <span className="section-label">Request a Consultation</span>
-                <h3 className="mt-4 text-2xl font-serif font-semibold text-primary mb-3">Tell us a little about your inquiry.</h3>
-                <p className="text-sm font-sans text-muted-foreground leading-relaxed">
+                <h3 className="mt-4 text-3xl font-serif font-semibold text-primary mb-3">Tell us a little about your inquiry.</h3>
+                <p className="text-base font-sans text-muted-foreground leading-relaxed">
                   A brief overview is enough to start. A senior member of our team will respond within one business day.
                 </p>
                 <a
@@ -195,7 +195,7 @@ const Contact = () => {
                       path: "request_call_calendly",
                     })
                   }
-                  className="mt-5 inline-flex items-center gap-2 border border-border px-5 py-3 text-xs font-sans font-medium tracking-[0.1em] uppercase text-primary hover:border-sand hover:text-navy-light transition-colors"
+                  className="mt-5 inline-flex items-center gap-2 border border-primary/30 bg-primary text-primary-foreground px-5 py-3 text-xs font-sans font-medium tracking-[0.1em] uppercase hover:bg-navy-light transition-colors"
                 >
                   Request a Call (Calendly) <ArrowRight className="w-4 h-4" />
                 </a>
@@ -219,7 +219,7 @@ const Contact = () => {
                       name="full_name"
                       type="text"
                       required
-                      className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all"
+                      className="w-full px-4 py-3 bg-white border border-border/80 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-sand/60 focus:border-sand transition-all"
                       placeholder="Your name"
                       onFocus={() => handleFormStart("full_name")}
                       onBlur={(e) => handleFieldCompleted("full_name", e.currentTarget.value)}
@@ -230,7 +230,7 @@ const Contact = () => {
                     <input
                       name="company"
                       type="text"
-                      className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all"
+                      className="w-full px-4 py-3 bg-white border border-border/80 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-sand/60 focus:border-sand transition-all"
                       placeholder="Your organization"
                       onFocus={() => handleFormStart("company")}
                       onBlur={(e) => handleFieldCompleted("company", e.currentTarget.value)}
@@ -244,7 +244,7 @@ const Contact = () => {
                       name="email"
                       type="email"
                       required
-                      className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all"
+                      className="w-full px-4 py-3 bg-white border border-border/80 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-sand/60 focus:border-sand transition-all"
                       placeholder="your@email.com"
                       onFocus={() => handleFormStart("email")}
                       onBlur={(e) => handleFieldCompleted("email", e.currentTarget.value)}
@@ -255,7 +255,7 @@ const Contact = () => {
                     <input
                       name="country_location"
                       type="text"
-                      className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all"
+                      className="w-full px-4 py-3 bg-white border border-border/80 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-sand/60 focus:border-sand transition-all"
                       placeholder="Where you're based"
                       onFocus={() => handleFormStart("country_location")}
                       onBlur={(e) => handleFieldCompleted("country_location", e.currentTarget.value)}
@@ -266,7 +266,7 @@ const Contact = () => {
                   <label className="text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground block mb-2">Area of Interest</label>
                   <select
                     name="area_of_interest"
-                    className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary focus:outline-none focus:ring-1 focus:ring-sand transition-all"
+                    className="w-full px-4 py-3 bg-white border border-border/80 text-sm font-sans text-primary focus:outline-none focus:ring-2 focus:ring-sand/60 focus:border-sand transition-all"
                     onFocus={() => handleFormStart("area_of_interest")}
                     onChange={(e) => handleFieldCompleted("area_of_interest", e.currentTarget.value)}
                   >
@@ -284,14 +284,14 @@ const Contact = () => {
                   <textarea
                     name="inquiry_summary"
                     rows={5}
-                    className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white border border-border/80 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-sand/60 focus:border-sand transition-all resize-none"
                     placeholder="Briefly describe your objectives and how we might be of assistance."
                     onFocus={() => handleFormStart("inquiry_summary")}
                     onBlur={(e) => handleFieldCompleted("inquiry_summary", e.currentTarget.value)}
                   />
                 </div>
                 <div className="pt-2">
-                  <button type="submit" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 text-sm font-sans font-medium tracking-[0.1em] uppercase hover:bg-navy-light transition-colors">
+                  <button type="submit" className="inline-flex w-full sm:w-auto justify-center items-center gap-2 bg-primary text-primary-foreground px-8 py-4 text-sm font-sans font-medium tracking-[0.1em] uppercase hover:bg-navy-light transition-colors">
                     Submit Inquiry <ArrowRight className="w-4 h-4" />
                   </button>
                   <p className="mt-4 text-xs font-sans text-muted-foreground tracking-wide">
