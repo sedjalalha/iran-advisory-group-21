@@ -6,52 +6,52 @@
 
 @layer base {
   :root {
-    /* Refined neutral-stone palette — calmer, cooler, less pink */
-    --background: 36 18% 96%;
-    --foreground: 216 45% 12%;
+    /* Light & modern — Slate Blue + Apricot palette */
+    --background: 30 25% 98%;
+    --foreground: 215 35% 22%;
 
-    --card: 36 16% 97%;
-    --card-foreground: 216 45% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 35% 22%;
 
-    --popover: 36 18% 96%;
-    --popover-foreground: 216 45% 12%;
+    --popover: 30 25% 98%;
+    --popover-foreground: 215 35% 22%;
 
-    /* Deep navy (slightly softened) */
-    --primary: 216 45% 13%;
-    --primary-foreground: 36 18% 96%;
+    /* Slate blue — softer, lighter than navy */
+    --primary: 215 38% 32%;
+    --primary-foreground: 30 25% 98%;
 
-    /* Warm sand — muted, less saturated */
-    --secondary: 32 22% 58%;
-    --secondary-foreground: 216 45% 13%;
+    /* Apricot — warm peach accent */
+    --secondary: 22 78% 68%;
+    --secondary-foreground: 215 38% 22%;
 
-    /* Stone neutrals */
-    --muted: 36 12% 92%;
-    --muted-foreground: 216 14% 42%;
+    /* Cool light neutrals */
+    --muted: 220 18% 94%;
+    --muted-foreground: 215 16% 46%;
 
-    --accent: 32 22% 58%;
-    --accent-foreground: 216 45% 13%;
+    --accent: 22 78% 68%;
+    --accent-foreground: 215 38% 22%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 36 10% 88%;
-    --input: 36 10% 88%;
-    --ring: 216 45% 13%;
+    --border: 220 16% 90%;
+    --input: 220 16% 90%;
+    --ring: 215 38% 32%;
 
     --radius: 0.25rem;
 
-    /* Custom tokens */
-    --navy: 216 45% 13%;
-    --navy-light: 216 32% 22%;
-    --navy-muted: 216 20% 36%;
-    --sand: 32 22% 58%;
-    --sand-light: 34 20% 78%;
-    --cream: 36 18% 96%;
-    --cream-dark: 36 10% 93%;
-    --stone: 30 8% 90%;
-    --stone-light: 32 12% 95%;
-    --warm-white: 36 22% 98%;
-    --charcoal: 216 14% 24%;
+    /* Custom tokens — kept names for compatibility, remapped to new palette */
+    --navy: 215 38% 32%;
+    --navy-light: 215 30% 44%;
+    --navy-muted: 215 22% 56%;
+    --sand: 22 78% 68%;
+    --sand-light: 24 70% 84%;
+    --cream: 30 25% 98%;
+    --cream-dark: 220 18% 95%;
+    --stone: 220 14% 92%;
+    --stone-light: 220 20% 96%;
+    --warm-white: 30 30% 99%;
+    --charcoal: 215 24% 28%;
 
     --sidebar-background: 216 50% 11%;
     --sidebar-foreground: 40 33% 96%;
