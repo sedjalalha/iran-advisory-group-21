@@ -7,52 +7,52 @@
 @layer base {
   :root {
     /* ============================================================
-       ACTIVE PALETTE — Burgundy + Blush (luxe & editorial)
+       ACTIVE PALETTE — Deep Navy + Sand (original editorial)
        To switch palettes, comment this block and uncomment another below.
        ============================================================ */
-    --background: 20 30% 97%;
-    --foreground: 350 35% 18%;
+    --background: 40 33% 96%;
+    --foreground: 216 50% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 350 35% 18%;
+    --card-foreground: 216 50% 11%;
 
-    --popover: 20 30% 97%;
-    --popover-foreground: 350 35% 18%;
+    --popover: 40 33% 96%;
+    --popover-foreground: 216 50% 11%;
 
-    /* Deep burgundy */
-    --primary: 350 45% 28%;
-    --primary-foreground: 20 30% 97%;
+    /* Deep navy */
+    --primary: 216 50% 11%;
+    --primary-foreground: 40 33% 96%;
 
-    /* Soft blush accent */
-    --secondary: 12 45% 82%;
-    --secondary-foreground: 350 45% 22%;
+    /* Warm sand accent */
+    --secondary: 34 30% 64%;
+    --secondary-foreground: 216 50% 11%;
 
-    --muted: 20 18% 93%;
-    --muted-foreground: 350 12% 42%;
+    --muted: 40 20% 92%;
+    --muted-foreground: 216 15% 40%;
 
-    --accent: 12 45% 82%;
-    --accent-foreground: 350 45% 22%;
+    --accent: 34 30% 64%;
+    --accent-foreground: 216 50% 11%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 20 14% 88%;
-    --input: 20 14% 88%;
-    --ring: 350 45% 28%;
+    --border: 40 18% 88%;
+    --input: 40 18% 88%;
+    --ring: 216 50% 11%;
 
     --radius: 0.25rem;
 
-    --navy: 350 45% 28%;
-    --navy-light: 350 32% 40%;
-    --navy-muted: 350 20% 52%;
-    --sand: 12 45% 82%;
-    --sand-light: 14 50% 90%;
-    --cream: 20 30% 97%;
-    --cream-dark: 20 22% 94%;
-    --stone: 20 16% 91%;
-    --stone-light: 20 24% 96%;
-    --warm-white: 20 35% 99%;
-    --charcoal: 350 20% 26%;
+    --navy: 216 50% 11%;
+    --navy-light: 216 38% 22%;
+    --navy-muted: 216 22% 40%;
+    --sand: 34 30% 64%;
+    --sand-light: 36 35% 78%;
+    --cream: 40 33% 96%;
+    --cream-dark: 40 25% 92%;
+    --stone: 40 16% 90%;
+    --stone-light: 40 22% 95%;
+    --warm-white: 40 38% 98%;
+    --charcoal: 216 24% 18%;
 
     /* ============================================================
        OPTION A — Forest Green + Cream
