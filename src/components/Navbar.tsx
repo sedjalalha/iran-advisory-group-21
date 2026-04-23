@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X, ArrowUpRight } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowUpRight, FileText, CalendarClock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { trackEvent } from "@/lib/analytics";
 import {
@@ -274,25 +274,28 @@ const Navbar = () => {
       </AnimatePresence>
 
       <Dialog open={consultationMenuOpen} onOpenChange={setConsultationMenuOpen}>
-        <DialogContent className="sm:max-w-xl bg-warm-white border-border p-8">
+        <DialogContent className="sm:max-w-2xl bg-stone-light border-border/80 p-8 md:p-10">
           <DialogHeader className="space-y-3 text-left">
-            <DialogTitle className="text-2xl font-serif font-semibold text-primary">
+            <DialogTitle className="text-3xl md:text-4xl font-sans font-semibold text-primary tracking-tight leading-tight">
               Choose your preferred next step
             </DialogTitle>
-            <DialogDescription className="text-sm font-sans text-muted-foreground leading-relaxed">
+            <DialogDescription className="text-lg font-sans text-muted-foreground leading-relaxed">
               Share your brief through our form, or request a direct call via Calendly.
             </DialogDescription>
           </DialogHeader>
 
-          <div className="mt-3 grid gap-4">
+          <div className="mt-4 grid gap-5">
             <Link
               to={`/contact?source=${consultationSource}_form`}
               onClick={handleFormPathSelected}
-              className="group block border border-border bg-warm-white p-5 transition-colors hover:border-sand"
+              className="group block border-2 border-sand/70 bg-warm-white p-6 md:p-7 shadow-sm transition-all hover:-translate-y-0.5 hover:border-sand hover:shadow-md"
             >
-              <div className="text-xs font-sans uppercase tracking-[0.18em] text-muted-foreground">Consultation Form</div>
-              <div className="mt-2 text-lg font-serif font-semibold text-primary">Fill the inquiry form</div>
-              <p className="mt-2 text-sm font-sans text-muted-foreground">
+              <div className="flex items-center gap-2 text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground">
+                <FileText className="h-4 w-4 text-sand" />
+                Consultation Form
+              </div>
+              <div className="mt-3 text-4xl font-sans font-semibold text-primary leading-tight tracking-tight">Fill the inquiry form</div>
+              <p className="mt-3 text-base font-sans text-muted-foreground">
                 Best for detailed requests and scoped mandates.
               </p>
             </Link>
@@ -302,14 +305,17 @@ const Navbar = () => {
               target="_blank"
               rel="noreferrer"
               onClick={handleCallPathSelected}
-              className="group block border border-border bg-warm-white p-5 transition-colors hover:border-sand"
+              className="group block border-2 border-primary/90 bg-primary p-6 md:p-7 text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-navy-light hover:shadow-md"
             >
-              <div className="text-xs font-sans uppercase tracking-[0.18em] text-muted-foreground">Request a Call</div>
-              <div className="mt-2 flex items-center gap-2 text-lg font-serif font-semibold text-primary">
+              <div className="flex items-center gap-2 text-xs font-sans uppercase tracking-[0.2em] text-primary-foreground/70">
+                <CalendarClock className="h-4 w-4 text-sand" />
+                Request a Call
+              </div>
+              <div className="mt-3 flex items-center gap-2 text-4xl font-sans font-semibold text-primary-foreground leading-tight tracking-tight">
                 Schedule via Calendly
                 <ArrowUpRight className="h-4 w-4" />
               </div>
-              <p className="mt-2 text-sm font-sans text-muted-foreground">
+              <p className="mt-3 text-base font-sans text-primary-foreground/75">
                 Pick a suitable time instantly with no back-and-forth.
               </p>
             </a>
