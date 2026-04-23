@@ -12,6 +12,10 @@ import heroShipping from "@/assets/hero-shipping.jpg";
 import insightTehran from "@/assets/insight-tehran.jpg";
 import insightHandshake from "@/assets/insight-handshake.jpg";
 import insightDesk from "@/assets/insight-desk.jpg";
+import teamFounder from "@/assets/team-founder.jpg";
+import teamPartner2 from "@/assets/team-partner-2.jpg";
+import teamPartner3 from "@/assets/team-partner-3.jpg";
+import teamPartner4 from "@/assets/team-partner-4.jpg";
 
 const heroSlides = [
   { image: heroBazaar, alt: "Iranian bazaar and local commerce" },
@@ -128,6 +132,37 @@ const engagements = [
     challenge: "Understanding pricing, regulation and exit dynamics in the Iranian property market.",
     work: "Market briefing, regional pricing research, and opportunity mapping across two corridors.",
     outcome: "Executive market report delivered within 14 days; investment thesis sharpened.",
+  },
+];
+
+const team = [
+  {
+    name: "Arad Mostafavi",
+    role: "Founding Partner",
+    bio: "Two decades advising international companies on entry, partnerships, and operations across Iran and the wider region.",
+    based: "Tehran · Dubai",
+    image: teamFounder,
+  },
+  {
+    name: "Leila Hosseini",
+    role: "Partner, Market Strategy",
+    bio: "Former corporate strategy lead. Heads our research practice and oversees mandates in consumer, industrial, and trade.",
+    based: "Tehran",
+    image: teamPartner2,
+  },
+  {
+    name: "Daniel Kaveh",
+    role: "Partner, Cross-Border",
+    bio: "Background in international banking and structured trade. Leads engagements involving payments, logistics, and compliance navigation.",
+    based: "Dubai · London",
+    image: teamPartner3,
+  },
+  {
+    name: "Mahnaz Sarrafi",
+    role: "Senior Advisor",
+    bio: "Decades inside Iranian institutional and family-business networks. Provides counsel on partner selection and stakeholder mapping.",
+    based: "Tehran · Isfahan",
+    image: teamPartner4,
   },
 ];
 
@@ -574,8 +609,64 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Insights / Editorial */}
+      {/* Team / Leadership */}
       <section className="section-padding py-20 md:py-28 bg-stone-light">
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-16 items-end">
+            <div className="lg:col-span-6">
+              <span className="section-label">The Team</span>
+              <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-serif font-semibold text-primary leading-tight">
+                Senior people. Direct involvement.
+              </h2>
+            </div>
+            <div className="lg:col-span-6">
+              <p className="text-base font-sans text-charcoal leading-relaxed">
+                Every mandate is led personally by one of our partners. We keep the firm intentionally small so that our most experienced people remain on the work — not behind it.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-14">
+            {team.map((member, i) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="group"
+              >
+                <div className="aspect-[4/5] overflow-hidden mb-6 bg-cream-dark">
+                  <img
+                    src={member.image}
+                    alt={`Portrait of ${member.name}`}
+                    loading="lazy"
+                    width={896}
+                    height={1152}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <p className="text-[10px] font-sans uppercase tracking-[0.2em] text-sand mb-2">{member.role}</p>
+                <h3 className="text-lg font-serif font-semibold text-primary leading-snug">{member.name}</h3>
+                <p className="mt-3 text-sm font-sans text-muted-foreground leading-relaxed">{member.bio}</p>
+                <p className="mt-4 text-[10px] font-sans uppercase tracking-[0.15em] text-muted-foreground/80">{member.based}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-16 pt-10 border-t border-border flex flex-wrap items-end justify-between gap-6">
+            <p className="text-sm font-sans text-muted-foreground max-w-xl leading-relaxed">
+              Beyond the partner team, we draw on a trusted network of in-country specialists, sector advisors, and on-the-ground operators — engaged selectively, mandate by mandate.
+            </p>
+            <Link to="/about" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-primary hover:text-navy-light transition-colors tracking-wide border-b border-sand pb-1">
+              About the Firm <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Insights / Editorial */}
+      <section className="section-padding py-20 md:py-28 bg-warm-white">
         <div className="section-container">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-16">
             <div className="max-w-xl">
