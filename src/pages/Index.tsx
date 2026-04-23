@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, MapPin, Shield, Users, Briefcase, Globe, Search, Lock, Compass, FileText } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MapPin, Shield, Users, Briefcase, Globe, Search, Lock, Compass, FileText, Building2, Wallet, Plane, Cpu, Ship, Landmark } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroBazaar from "@/assets/hero-bazaar.jpg";
 import heroOil from "@/assets/hero-oil.jpg";
@@ -96,6 +96,39 @@ const principles = [
   { icon: Lock, title: "Confidentiality first", text: "Every engagement, every conversation. We work with sensitive mandates as a default." },
   { icon: Compass, title: "Boutique by design", text: "A limited client roster ensures partner-level attention on every mandate we accept." },
   { icon: FileText, title: "Written, not whispered", text: "Findings, recommendations, and risks documented clearly — built for board-level use." },
+];
+
+const clientTypes = [
+  { icon: Globe, label: "Foreign Investors" },
+  { icon: Building2, label: "Expansion Teams" },
+  { icon: Wallet, label: "Family Offices" },
+  { icon: Cpu, label: "SaaS & Tech Companies" },
+  { icon: Ship, label: "Trade & Export Businesses" },
+  { icon: Landmark, label: "Regional Operators" },
+];
+
+const engagements = [
+  {
+    tag: "Technology · IT Outsourcing",
+    client: "European Technology Firm",
+    challenge: "Assessing the feasibility of routing software development work through Iran.",
+    work: "Capability mapping, pricing benchmark, and risk overview across three candidate cities.",
+    outcome: "Structured go/no-go report delivered in four weeks, enabling a clear board decision.",
+  },
+  {
+    tag: "Agriculture · Cross-Border Trade",
+    client: "Russian Agricultural Exporter",
+    challenge: "Identifying qualified buyers in Iran for lentil and grain volumes.",
+    work: "Buyer research, shortlisting, meeting setup, and in-country visit coordination.",
+    outcome: "Three qualified buyer meetings held; a recurring trade relationship initiated.",
+  },
+  {
+    tag: "Real Estate · Investment",
+    client: "UAE-Based Private Investor",
+    challenge: "Understanding pricing, regulation and exit dynamics in the Iranian property market.",
+    work: "Market briefing, regional pricing research, and opportunity mapping across two corridors.",
+    outcome: "Executive market report delivered within 14 days; investment thesis sharpened.",
+  },
 ];
 
 const Index = () => {
@@ -278,19 +311,20 @@ const Index = () => {
       {/* In-Country Presence — Map-style */}
       <section className="section-padding py-20 md:py-28 bg-cream-dark">
         <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-10">
             <div className="lg:col-span-5">
               <span className="section-label">In-Country Reach</span>
               <h2 className="mt-4 text-3xl md:text-4xl font-serif font-semibold text-primary leading-tight">
-                Six cities. One coordinated team.
+                Nationwide presence, coordinated centrally.
               </h2>
             </div>
             <div className="lg:col-span-7">
               <p className="text-base font-sans text-charcoal leading-relaxed">
-                Our team operates from Tehran with established working relationships across Iran's major commercial centres. Whether you need a vendor visited in Isfahan, a port assessed in Bandar Abbas, or a contract signed in Tabriz — we are present where the work happens.
+                Our core team operates from Tehran, with trusted working relationships extending across every major Iranian commercial centre — and the wider provincial network that real execution often demands. The cities below are a sample of where we are most active; in practice, our reach covers the country.
               </p>
             </div>
           </div>
+          <p className="section-label mb-6 text-sand">Selected Operating Cities</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {presence.map((p, i) => (
               <motion.div
@@ -310,10 +344,125 @@ const Index = () => {
               </motion.div>
             ))}
           </div>
+          <p className="mt-6 text-xs font-sans text-muted-foreground tracking-wide">
+            Plus extended provincial coverage through our trusted in-country network — we mobilise wherever the work demands.
+          </p>
         </div>
       </section>
 
-      {/* Sectors Band */}
+      {/* Who We Serve */}
+      <section className="section-padding py-20 md:py-28 bg-warm-white">
+        <div className="section-container">
+          <div className="max-w-2xl mb-14">
+            <span className="section-label">Who We Serve</span>
+            <h2 className="mt-4 text-3xl md:text-4xl font-serif font-semibold text-primary leading-tight">
+              Built for serious operators with real Iran questions.
+            </h2>
+            <p className="mt-4 text-base font-sans text-muted-foreground leading-relaxed">
+              We work with a small number of clients at a time — typically those approaching Iran with intent, not curiosity.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-border">
+            {clientTypes.map((c, i) => (
+              <motion.div
+                key={c.label}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05, duration: 0.4 }}
+                className="bg-warm-white p-6 md:p-8 flex flex-col gap-4 hover:bg-cream-dark transition-colors"
+              >
+                <c.icon className="w-4 h-4 text-sand" strokeWidth={1.5} />
+                <span className="text-sm font-serif font-semibold text-primary leading-snug">{c.label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Selected Engagements */}
+      <section className="section-padding py-20 md:py-28 bg-cream-dark">
+        <div className="section-container">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
+            <div className="max-w-xl">
+              <span className="section-label">Selected Engagements</span>
+              <h2 className="mt-4 text-3xl md:text-4xl font-serif font-semibold text-primary leading-tight">
+                A sample of recent work.
+              </h2>
+              <p className="mt-4 text-sm font-sans text-muted-foreground leading-relaxed">
+                Client identities are kept confidential by default. The mandates below are anonymised summaries.
+              </p>
+            </div>
+          </div>
+          <div className="space-y-px bg-border">
+            {engagements.map((e, i) => (
+              <motion.article
+                key={e.client}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="bg-warm-white p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 group"
+              >
+                <div className="lg:col-span-3">
+                  <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-sand">{e.tag}</span>
+                  <h3 className="mt-3 text-xl font-serif font-semibold text-primary leading-snug">{e.client}</h3>
+                </div>
+                <div className="lg:col-span-3">
+                  <p className="text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground mb-2">Challenge</p>
+                  <p className="text-sm font-sans text-charcoal leading-relaxed">{e.challenge}</p>
+                </div>
+                <div className="lg:col-span-3">
+                  <p className="text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground mb-2">What We Did</p>
+                  <p className="text-sm font-sans text-charcoal leading-relaxed">{e.work}</p>
+                </div>
+                <div className="lg:col-span-3">
+                  <p className="text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground mb-2">Outcome</p>
+                  <p className="text-sm font-sans text-charcoal leading-relaxed">{e.outcome}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Iran, Why Now */}
+      <section className="section-padding py-20 md:py-28 bg-warm-white">
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            <div className="lg:col-span-5">
+              <span className="section-label">Why Iran, Why Now</span>
+              <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-serif font-semibold text-primary leading-tight">
+                A market at an inflection point.
+              </h2>
+              <div className="editorial-line my-8" />
+            </div>
+            <div className="lg:col-span-7">
+              <p className="text-lg font-sans text-charcoal leading-relaxed">
+                Iran remains one of the largest under-engaged markets in the world — roughly 90 million people, a substantial industrial base, an unusually well-educated workforce, and deep regional connectivity from the Caucasus to the Gulf.
+              </p>
+              <p className="mt-5 text-base font-sans text-muted-foreground leading-relaxed">
+                The conditions shaping international engagement are shifting. For businesses willing to move early, move carefully, and move with the right local counsel, the opportunity is real and structurally underpriced. We help our clients act on it without naivety.
+              </p>
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div className="border-t border-sand pt-4">
+                  <div className="text-3xl font-serif font-medium text-primary">~90m</div>
+                  <div className="mt-2 text-xs font-sans uppercase tracking-[0.15em] text-muted-foreground">Population</div>
+                </div>
+                <div className="border-t border-sand pt-4">
+                  <div className="text-3xl font-serif font-medium text-primary">G20</div>
+                  <div className="mt-2 text-xs font-sans uppercase tracking-[0.15em] text-muted-foreground">Scale economy by PPP</div>
+                </div>
+                <div className="border-t border-sand pt-4">
+                  <div className="text-3xl font-serif font-medium text-primary">15+</div>
+                  <div className="mt-2 text-xs font-sans uppercase tracking-[0.15em] text-muted-foreground">Bordering / proximate markets</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-primary section-padding py-20 md:py-28">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
