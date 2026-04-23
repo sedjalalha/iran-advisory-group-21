@@ -1,0 +1,2 @@
+export const CALENDLY_URL =
+  import.meta.env.VITE_CALENDLY_URL || "https://calendly.com/arad-advisory/initial-consultation";
