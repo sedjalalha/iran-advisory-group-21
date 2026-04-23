@@ -188,7 +188,8 @@ const Contact = () => {
                 <MapPin className="w-4 h-4 text-sand mb-4" strokeWidth={1.5} />
                 <h3 className="text-xl font-serif font-semibold text-primary">{o.city}</h3>
                 <p className="mt-2 text-sm font-sans text-charcoal">{o.role}</p>
-                <p className="mt-3 text-xs font-sans text-muted-foreground tracking-wide">{o.note}</p>
+                <p className="mt-3 text-xs font-sans text-muted-foreground tracking-wide leading-relaxed">{o.address}</p>
+                <p className="mt-2 text-xs font-sans text-muted-foreground/60 tracking-wide">{o.note}</p>
               </motion.div>
             ))}
           </div>
