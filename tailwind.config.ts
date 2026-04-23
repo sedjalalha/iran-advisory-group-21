@@ -64,6 +64,10 @@ export default {
           DEFAULT: "hsl(var(--cream))",
           dark: "hsl(var(--cream-dark))",
         },
+        stone: {
+          DEFAULT: "hsl(var(--stone))",
+          light: "hsl(var(--stone-light))",
+        },
         "warm-white": "hsl(var(--warm-white))",
         charcoal: "hsl(var(--charcoal))",
         sidebar: {

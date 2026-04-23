@@ -265,7 +265,7 @@ const Index = () => {
       </section>
 
       {/* Services */}
-      <section className="section-padding py-20 md:py-28">
+      <section className="section-padding py-20 md:py-28 bg-stone-light">
         <div className="section-container">
           <div className="max-w-2xl mb-16">
             <span className="section-label">Advisory Services</span>
@@ -284,7 +284,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="bg-warm-white p-8 md:p-10 group hover:bg-cream-dark transition-colors"
+                className="bg-warm-white p-8 md:p-10 group hover:bg-cream transition-colors"
               >
                 <service.icon className="w-5 h-5 text-sand mb-6" strokeWidth={1.5} />
                 <h3 className="text-lg font-serif font-semibold text-primary mb-3">{service.title}</h3>
@@ -292,15 +292,15 @@ const Index = () => {
               </motion.div>
             ))}
             {/* CTA cell */}
-            <div className="bg-primary p-8 md:p-10 flex flex-col justify-between">
+            <div className="bg-warm-white p-8 md:p-10 flex flex-col justify-between border-l-2 border-sand">
               <div>
                 <Shield className="w-5 h-5 text-sand mb-6" strokeWidth={1.5} />
-                <h3 className="text-lg font-serif font-semibold text-primary-foreground mb-3">Tailored Engagements</h3>
-                <p className="text-sm font-sans text-primary-foreground/60 leading-relaxed">
+                <h3 className="text-lg font-serif font-semibold text-primary mb-3">Tailored Engagements</h3>
+                <p className="text-sm font-sans text-muted-foreground leading-relaxed">
                   Every mandate is different. We scope our work to match your stage, objectives, and risk posture.
                 </p>
               </div>
-              <Link to="/services" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-sand hover:text-sand-light transition-colors mt-8 tracking-wide">
+              <Link to="/services" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-primary hover:text-navy-light transition-colors mt-8 tracking-wide border-b border-sand pb-1 self-start">
                 View All Services <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -309,7 +309,7 @@ const Index = () => {
       </section>
 
       {/* In-Country Presence — Map-style */}
-      <section className="section-padding py-20 md:py-28 bg-cream-dark">
+      <section className="section-padding py-20 md:py-28 bg-warm-white">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-10">
             <div className="lg:col-span-5">
@@ -324,7 +324,7 @@ const Index = () => {
               </p>
             </div>
           </div>
-          <p className="section-label mb-6 text-sand">Selected Operating Cities</p>
+          <p className="section-label mb-6">Selected Operating Cities</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {presence.map((p, i) => (
               <motion.div
@@ -333,7 +333,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06, duration: 0.5 }}
-                className="bg-warm-white p-8 group hover:bg-cream transition-colors"
+                className="bg-warm-white p-8 group hover:bg-stone-light transition-colors"
               >
                 <div className="flex items-start justify-between mb-6">
                   <MapPin className="w-4 h-4 text-sand" strokeWidth={1.5} />
@@ -351,7 +351,7 @@ const Index = () => {
       </section>
 
       {/* Who We Serve */}
-      <section className="section-padding py-20 md:py-28 bg-warm-white">
+      <section className="section-padding py-20 md:py-28 bg-stone-light">
         <div className="section-container">
           <div className="max-w-2xl mb-14">
             <span className="section-label">Who We Serve</span>
@@ -370,7 +370,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05, duration: 0.4 }}
-                className="bg-warm-white p-6 md:p-8 flex flex-col gap-4 hover:bg-cream-dark transition-colors"
+                className="bg-warm-white p-6 md:p-8 flex flex-col gap-4 hover:bg-cream transition-colors"
               >
                 <c.icon className="w-4 h-4 text-sand" strokeWidth={1.5} />
                 <span className="text-sm font-serif font-semibold text-primary leading-snug">{c.label}</span>
@@ -381,7 +381,7 @@ const Index = () => {
       </section>
 
       {/* Selected Engagements */}
-      <section className="section-padding py-20 md:py-28 bg-cream-dark">
+      <section className="section-padding py-20 md:py-28 bg-warm-white">
         <div className="section-container">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
             <div className="max-w-xl">
@@ -394,7 +394,7 @@ const Index = () => {
               </p>
             </div>
           </div>
-          <div className="space-y-px bg-border">
+          <div className="border-t border-border">
             {engagements.map((e, i) => (
               <motion.article
                 key={e.client}
@@ -402,7 +402,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="bg-warm-white p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 group"
+                className="border-b border-border py-10 md:py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 group"
               >
                 <div className="lg:col-span-3">
                   <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-sand">{e.tag}</span>
@@ -427,7 +427,7 @@ const Index = () => {
       </section>
 
       {/* Why Iran, Why Now */}
-      <section className="section-padding py-20 md:py-28 bg-warm-white">
+      <section className="section-padding py-20 md:py-28 bg-stone-light">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             <div className="lg:col-span-5">
@@ -463,28 +463,41 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="bg-primary section-padding py-20 md:py-28">
+      {/* Sector Coverage — light editorial */}
+      <section className="bg-warm-white section-padding py-20 md:py-28">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             <div className="lg:col-span-4">
-              <span className="section-label text-sand">Sector Coverage</span>
-              <h2 className="mt-4 text-3xl md:text-4xl font-serif font-semibold text-primary-foreground leading-tight">
+              <span className="section-label">Sector Coverage</span>
+              <h2 className="mt-4 text-3xl md:text-4xl font-serif font-semibold text-primary leading-tight">
                 Across industries, grounded in local reality.
               </h2>
-              <p className="mt-4 text-sm font-sans text-primary-foreground/60 leading-relaxed">
+              <p className="mt-4 text-sm font-sans text-muted-foreground leading-relaxed">
                 We work across traditional and emerging sectors, always combining market knowledge with practical access.
               </p>
-              <Link to="/sectors" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-sand hover:text-sand-light transition-colors mt-6 tracking-wide">
+              <Link to="/sectors" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-primary hover:text-navy-light transition-colors mt-6 tracking-wide border-b border-sand pb-1">
                 Explore Sectors <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
             <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-primary-foreground/10">
-                {sectors.map((sector) => (
-                  <div key={sector.title} className="bg-navy-light p-8 hover:bg-charcoal transition-colors">
-                    <h3 className="text-lg font-serif font-semibold text-primary-foreground mb-2">{sector.title}</h3>
-                    <p className="text-xs font-sans text-primary-foreground/50 tracking-wide">{sector.items}</p>
-                  </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2">
+                {sectors.map((sector, i) => (
+                  <motion.div
+                    key={sector.title}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.06, duration: 0.5 }}
+                    className="border-t border-border p-8 group hover:bg-stone-light transition-colors"
+                  >
+                    <div className="flex items-start gap-4">
+                      <span className="text-xs font-sans tracking-[0.2em] text-sand font-medium pt-1">0{i + 1}</span>
+                      <div>
+                        <h3 className="text-lg font-serif font-semibold text-primary mb-2">{sector.title}</h3>
+                        <p className="text-xs font-sans text-muted-foreground tracking-wide leading-relaxed">{sector.items}</p>
+                      </div>
+                    </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -493,7 +506,7 @@ const Index = () => {
       </section>
 
       {/* How We Work — Process */}
-      <section className="section-padding py-20 md:py-28 bg-warm-white">
+      <section className="section-padding py-20 md:py-28 bg-stone-light">
         <div className="section-container">
           <div className="max-w-2xl mb-16">
             <span className="section-label">How We Work</span>
@@ -527,7 +540,7 @@ const Index = () => {
       </section>
 
       {/* Principles / Why Arad */}
-      <section className="section-padding py-20 md:py-28 bg-cream-dark">
+      <section className="section-padding py-20 md:py-28 bg-warm-white">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             <div className="lg:col-span-4 lg:sticky lg:top-32">
@@ -539,7 +552,7 @@ const Index = () => {
                 Three commitments that shape every engagement we accept.
               </p>
             </div>
-            <div className="lg:col-span-8 space-y-px bg-border">
+            <div className="lg:col-span-8 border-t border-border">
               {principles.map((p, i) => (
                 <motion.div
                   key={p.title}
@@ -547,7 +560,7 @@ const Index = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="bg-warm-white p-8 md:p-10 flex gap-6 items-start"
+                  className="border-b border-border py-8 md:py-10 flex gap-6 items-start"
                 >
                   <p.icon className="w-5 h-5 text-sand flex-shrink-0 mt-1" strokeWidth={1.5} />
                   <div>
@@ -562,7 +575,7 @@ const Index = () => {
       </section>
 
       {/* Insights / Editorial */}
-      <section className="section-padding py-20 md:py-28 bg-warm-white">
+      <section className="section-padding py-20 md:py-28 bg-stone-light">
         <div className="section-container">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-16">
             <div className="max-w-xl">
