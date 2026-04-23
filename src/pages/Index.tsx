@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, MapPin, Shield, Users, Briefcase, Globe, Search, Lock, Compass, FileText } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MapPin, Shield, Users, Briefcase, Globe, Search, Lock, Compass, FileText, Building2, Wallet, Plane, Cpu, Ship, Landmark } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroBazaar from "@/assets/hero-bazaar.jpg";
 import heroOil from "@/assets/hero-oil.jpg";
