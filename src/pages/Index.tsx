@@ -265,7 +265,7 @@ const Index = () => {
       </section>
 
       {/* Services */}
-      <section className="section-padding py-20 md:py-28">
+      <section className="section-padding py-20 md:py-28 bg-stone-light">
         <div className="section-container">
           <div className="max-w-2xl mb-16">
             <span className="section-label">Advisory Services</span>
@@ -284,7 +284,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="bg-warm-white p-8 md:p-10 group hover:bg-cream-dark transition-colors"
+                className="bg-warm-white p-8 md:p-10 group hover:bg-cream transition-colors"
               >
                 <service.icon className="w-5 h-5 text-sand mb-6" strokeWidth={1.5} />
                 <h3 className="text-lg font-serif font-semibold text-primary mb-3">{service.title}</h3>
@@ -292,15 +292,15 @@ const Index = () => {
               </motion.div>
             ))}
             {/* CTA cell */}
-            <div className="bg-primary p-8 md:p-10 flex flex-col justify-between">
+            <div className="bg-warm-white p-8 md:p-10 flex flex-col justify-between border-l-2 border-sand">
               <div>
                 <Shield className="w-5 h-5 text-sand mb-6" strokeWidth={1.5} />
-                <h3 className="text-lg font-serif font-semibold text-primary-foreground mb-3">Tailored Engagements</h3>
-                <p className="text-sm font-sans text-primary-foreground/60 leading-relaxed">
+                <h3 className="text-lg font-serif font-semibold text-primary mb-3">Tailored Engagements</h3>
+                <p className="text-sm font-sans text-muted-foreground leading-relaxed">
                   Every mandate is different. We scope our work to match your stage, objectives, and risk posture.
                 </p>
               </div>
-              <Link to="/services" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-sand hover:text-sand-light transition-colors mt-8 tracking-wide">
+              <Link to="/services" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-primary hover:text-navy-light transition-colors mt-8 tracking-wide border-b border-sand pb-1 self-start">
                 View All Services <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -309,7 +309,7 @@ const Index = () => {
       </section>
 
       {/* In-Country Presence — Map-style */}
-      <section className="section-padding py-20 md:py-28 bg-cream-dark">
+      <section className="section-padding py-20 md:py-28 bg-warm-white">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-10">
             <div className="lg:col-span-5">
@@ -324,7 +324,7 @@ const Index = () => {
               </p>
             </div>
           </div>
-          <p className="section-label mb-6 text-sand">Selected Operating Cities</p>
+          <p className="section-label mb-6">Selected Operating Cities</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {presence.map((p, i) => (
               <motion.div
@@ -333,7 +333,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06, duration: 0.5 }}
-                className="bg-warm-white p-8 group hover:bg-cream transition-colors"
+                className="bg-warm-white p-8 group hover:bg-stone-light transition-colors"
               >
                 <div className="flex items-start justify-between mb-6">
                   <MapPin className="w-4 h-4 text-sand" strokeWidth={1.5} />
