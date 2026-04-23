@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin, Shield, Users, Briefcase, Globe, Search } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MapPin, Shield, Users, Briefcase, Globe, Search, Lock, Compass, FileText } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroBazaar from "@/assets/hero-bazaar.jpg";
 import heroOil from "@/assets/hero-oil.jpg";
@@ -9,6 +9,9 @@ import heroAgriculture from "@/assets/hero-agriculture.jpg";
 import heroTourism from "@/assets/hero-tourism.jpg";
 import heroTechnology from "@/assets/hero-technology.jpg";
 import heroShipping from "@/assets/hero-shipping.jpg";
+import insightTehran from "@/assets/insight-tehran.jpg";
+import insightHandshake from "@/assets/insight-handshake.jpg";
+import insightDesk from "@/assets/insight-desk.jpg";
 
 const heroSlides = [
   { image: heroBazaar, alt: "Iranian bazaar and local commerce" },
@@ -27,6 +30,13 @@ const fadeUp = {
   }),
 };
 
+const stats = [
+  { value: "15+", label: "Years on the ground in Iran" },
+  { value: "9", label: "Sectors actively covered" },
+  { value: "40+", label: "Cross-border mandates delivered" },
+  { value: "3", label: "Coordination hubs: Tehran · Dubai · London" },
+];
+
 const services = [
   { icon: Search, title: "Market Intelligence", description: "Commercial research, competitive landscape analysis, and sector mapping tailored to your strategic questions." },
   { icon: Globe, title: "Market Entry", description: "End-to-end support structuring your approach to entering or expanding within the Iranian market." },
@@ -40,6 +50,52 @@ const sectors = [
   { title: "Trade & Industry", items: "Cross-border Trade · Manufacturing · Industrial" },
   { title: "Investment & Real Estate", items: "Capital Deployment · Property · Development" },
   { title: "Agriculture & Resources", items: "Agricultural Trade · Natural Resources" },
+];
+
+const presence = [
+  { city: "Tehran", role: "Primary in-country team", coords: "35.7° N · 51.4° E" },
+  { city: "Isfahan", role: "Industrial & manufacturing corridor", coords: "32.6° N · 51.7° E" },
+  { city: "Mashhad", role: "Northeast trade gateway", coords: "36.3° N · 59.6° E" },
+  { city: "Tabriz", role: "Northwest & cross-border access", coords: "38.1° N · 46.3° E" },
+  { city: "Shiraz", role: "Southern commercial reach", coords: "29.6° N · 52.5° E" },
+  { city: "Bandar Abbas", role: "Maritime & logistics hub", coords: "27.2° N · 56.3° E" },
+];
+
+const process = [
+  { num: "01", title: "Listen", description: "We start with a confidential conversation to understand your objectives, constraints, and the questions you actually need answered." },
+  { num: "02", title: "Scope", description: "A clear written proposal — defined deliverables, timelines, and a fixed scope. No open-ended retainers." },
+  { num: "03", title: "Deliver", description: "Structured execution from our cross-border team, with weekly visibility and direct partner-level engagement throughout." },
+  { num: "04", title: "Stay alongside", description: "Optional ongoing local coordination once the initial mandate concludes — for follow-through that matters." },
+];
+
+const insights = [
+  {
+    image: insightTehran,
+    category: "Market Note",
+    date: "Q1 2025",
+    title: "Reading Iran's consumer market through informal channels",
+    excerpt: "Why official data alone misunderstates demand — and how foreign operators can build a more accurate picture of the Iranian consumer.",
+  },
+  {
+    image: insightHandshake,
+    category: "Perspective",
+    date: "Q4 2024",
+    title: "Choosing the right local partner — and what to avoid",
+    excerpt: "A practical framework for evaluating distributors, JV candidates, and commercial agents in the Iranian market.",
+  },
+  {
+    image: insightDesk,
+    category: "Briefing",
+    date: "Q4 2024",
+    title: "Cross-border payments in 2025: a working playbook",
+    excerpt: "Mapping the operational mechanics that foreign companies are actually using to settle commercial flows linked to Iran.",
+  },
+];
+
+const principles = [
+  { icon: Lock, title: "Confidentiality first", text: "Every engagement, every conversation. We work with sensitive mandates as a default." },
+  { icon: Compass, title: "Boutique by design", text: "A limited client roster ensures partner-level attention on every mandate we accept." },
+  { icon: FileText, title: "Written, not whispered", text: "Findings, recommendations, and risks documented clearly — built for board-level use." },
 ];
 
 const Index = () => {
@@ -113,25 +169,60 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Introduction */}
+      {/* Stats Strip */}
+      <section className="bg-primary border-t border-primary-foreground/10">
+        <div className="section-container section-padding">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-primary-foreground/10">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="px-6 py-10 first:pl-0 lg:first:pl-0"
+              >
+                <div className="text-4xl md:text-5xl font-serif font-medium text-sand">{s.value}</div>
+                <div className="mt-3 text-xs font-sans uppercase tracking-[0.15em] text-primary-foreground/60 leading-relaxed">{s.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Introduction with editorial image */}
       <section className="section-padding py-20 md:py-28 bg-warm-white">
         <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-            <div className="lg:col-span-5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="lg:col-span-5 order-2 lg:order-1">
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <img
+                  src={insightTehran}
+                  alt="Tehran skyline at golden hour"
+                  loading="lazy"
+                  width={1280}
+                  height={896}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/80 to-transparent p-6">
+                  <p className="text-xs font-sans uppercase tracking-[0.2em] text-sand">Tehran · Operating Base</p>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-7 order-1 lg:order-2">
               <span className="section-label">Who We Are</span>
-              <h2 className="mt-4 text-3xl md:text-4xl font-serif font-semibold text-primary leading-tight">
+              <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-serif font-semibold text-primary leading-tight">
                 A boutique firm built for Iran's complexity.
               </h2>
-            </div>
-            <div className="lg:col-span-7 space-y-6">
-              <p className="text-base font-sans text-charcoal leading-relaxed">
-                Arad Advisory is a boutique business advisory firm that bridges the gap between foreign companies and the Iranian market. We combine deep local knowledge with professional cross-border delivery to give our clients something rare: reliable, grounded insight and access in one of the world's most misunderstood markets.
+              <div className="editorial-line my-8" />
+              <p className="text-base md:text-lg font-sans text-charcoal leading-relaxed">
+                Arad Advisory bridges the gap between foreign companies and the Iranian market. We combine deep local knowledge with professional cross-border delivery to give our clients something rare in this market: reliable, grounded insight and access in one place.
               </p>
-              <p className="text-base font-sans text-muted-foreground leading-relaxed">
+              <p className="mt-5 text-base font-sans text-muted-foreground leading-relaxed">
                 Our team has roots inside Iran and a network built over years of real commercial engagement. We don't just analyze markets — we open doors, find partners, support operations, and stay alongside our clients as they navigate complexity.
               </p>
-              <div className="pt-4">
-                <Link to="/about" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-primary hover:text-navy-light transition-colors tracking-wide">
+              <div className="pt-8">
+                <Link to="/about" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-primary hover:text-navy-light transition-colors tracking-wide border-b border-sand pb-1">
                   Learn About Our Firm <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -139,9 +230,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* Divider */}
-      <div className="section-padding"><div className="section-container divider-sand" /></div>
 
       {/* Services */}
       <section className="section-padding py-20 md:py-28">
@@ -187,6 +275,44 @@ const Index = () => {
         </div>
       </section>
 
+      {/* In-Country Presence — Map-style */}
+      <section className="section-padding py-20 md:py-28 bg-cream-dark">
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-16">
+            <div className="lg:col-span-5">
+              <span className="section-label">In-Country Reach</span>
+              <h2 className="mt-4 text-3xl md:text-4xl font-serif font-semibold text-primary leading-tight">
+                Six cities. One coordinated team.
+              </h2>
+            </div>
+            <div className="lg:col-span-7">
+              <p className="text-base font-sans text-charcoal leading-relaxed">
+                Our team operates from Tehran with established working relationships across Iran's major commercial centres. Whether you need a vendor visited in Isfahan, a port assessed in Bandar Abbas, or a contract signed in Tabriz — we are present where the work happens.
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+            {presence.map((p, i) => (
+              <motion.div
+                key={p.city}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, duration: 0.5 }}
+                className="bg-warm-white p-8 group hover:bg-cream transition-colors"
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <MapPin className="w-4 h-4 text-sand" strokeWidth={1.5} />
+                  <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground">{p.coords}</span>
+                </div>
+                <h3 className="text-xl font-serif font-semibold text-primary">{p.city}</h3>
+                <p className="mt-2 text-sm font-sans text-muted-foreground leading-relaxed">{p.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Sectors Band */}
       <section className="bg-primary section-padding py-20 md:py-28">
         <div className="section-container">
@@ -217,50 +343,167 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Work With Us */}
-      <section className="section-padding py-20 md:py-28 bg-cream-dark">
+      {/* How We Work — Process */}
+      <section className="section-padding py-20 md:py-28 bg-warm-white">
         <div className="section-container">
-          <div className="max-w-2xl mx-auto text-center mb-16">
-            <span className="section-label">Why Arad</span>
+          <div className="max-w-2xl mb-16">
+            <span className="section-label">How We Work</span>
             <h2 className="mt-4 text-3xl md:text-4xl font-serif font-semibold text-primary leading-tight">
-              What sets us apart.
+              A four-step engagement.
             </h2>
+            <p className="mt-4 text-base font-sans text-muted-foreground leading-relaxed">
+              Clear scope. Defined deliverables. Partner-led from first conversation to final handover.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-            {[
-              { title: "Real In-Country Access", text: "We don't work from a distance. Our network is built from years of on-the-ground engagement across Iranian cities, industries, and institutions." },
-              { title: "Cross-Border Professionalism", text: "We deliver to international standards — structured reporting, clear timelines, confidential handling, and transparent communication." },
-              { title: "Boutique Discretion", text: "We work with a limited number of clients at any time, ensuring dedicated attention and the discretion that sensitive markets demand." },
-            ].map((item, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 relative">
+            {process.map((step, i) => (
               <motion.div
-                key={item.title}
+                key={step.num}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="relative"
               >
-                <div className="editorial-line mb-6" />
-                <h3 className="text-lg font-serif font-semibold text-primary mb-3">{item.title}</h3>
-                <p className="text-sm font-sans text-muted-foreground leading-relaxed">{item.text}</p>
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="text-xs font-sans tracking-[0.2em] text-sand font-medium">{step.num}</span>
+                  <div className="flex-1 h-px bg-border" />
+                </div>
+                <h3 className="text-xl font-serif font-semibold text-primary mb-3">{step.title}</h3>
+                <p className="text-sm font-sans text-muted-foreground leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Principles / Why Arad */}
+      <section className="section-padding py-20 md:py-28 bg-cream-dark">
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            <div className="lg:col-span-4 lg:sticky lg:top-32">
+              <span className="section-label">Operating Principles</span>
+              <h2 className="mt-4 text-3xl md:text-4xl font-serif font-semibold text-primary leading-tight">
+                The way we work, by design.
+              </h2>
+              <p className="mt-4 text-sm font-sans text-muted-foreground leading-relaxed">
+                Three commitments that shape every engagement we accept.
+              </p>
+            </div>
+            <div className="lg:col-span-8 space-y-px bg-border">
+              {principles.map((p, i) => (
+                <motion.div
+                  key={p.title}
+                  initial={{ opacity: 0, x: 16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  className="bg-warm-white p-8 md:p-10 flex gap-6 items-start"
+                >
+                  <p.icon className="w-5 h-5 text-sand flex-shrink-0 mt-1" strokeWidth={1.5} />
+                  <div>
+                    <h3 className="text-lg font-serif font-semibold text-primary mb-2">{p.title}</h3>
+                    <p className="text-sm font-sans text-muted-foreground leading-relaxed">{p.text}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Insights / Editorial */}
+      <section className="section-padding py-20 md:py-28 bg-warm-white">
+        <div className="section-container">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-16">
+            <div className="max-w-xl">
+              <span className="section-label">Recent Thinking</span>
+              <h2 className="mt-4 text-3xl md:text-4xl font-serif font-semibold text-primary leading-tight">
+                Notes from the ground.
+              </h2>
+            </div>
+            <Link to="/insights" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-primary hover:text-navy-light transition-colors tracking-wide border-b border-sand pb-1">
+              All Insights <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+            {insights.map((post, i) => (
+              <motion.article
+                key={post.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="group cursor-pointer"
+              >
+                <div className="aspect-[4/3] overflow-hidden mb-6">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    loading="lazy"
+                    width={1280}
+                    height={896}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex items-center gap-3 text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                  <span className="text-sand">{post.category}</span>
+                  <span className="w-1 h-1 rounded-full bg-border" />
+                  <span>{post.date}</span>
+                </div>
+                <h3 className="text-xl font-serif font-semibold text-primary leading-snug mb-3 group-hover:text-navy-light transition-colors">
+                  {post.title}
+                </h3>
+                <p className="text-sm font-sans text-muted-foreground leading-relaxed mb-4">{post.excerpt}</p>
+                <span className="inline-flex items-center gap-1 text-xs font-sans uppercase tracking-[0.15em] text-primary">
+                  Read note <ArrowUpRight className="w-3.5 h-3.5" />
+                </span>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quote / Testimonial Band */}
+      <section className="bg-primary section-padding py-24 md:py-32 relative overflow-hidden">
+        <div className="section-container relative z-10">
+          <div className="max-w-4xl">
+            <div className="text-sand text-6xl font-serif leading-none mb-6">&ldquo;</div>
+            <blockquote className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-primary-foreground leading-snug">
+              They gave us something we hadn't found anywhere else — a serious, written read of the market combined with people on the ground who could actually move things forward.
+            </blockquote>
+            <div className="mt-10 flex items-center gap-4">
+              <div className="editorial-line" />
+              <div>
+                <div className="text-sm font-sans font-medium text-primary-foreground">Head of International Markets</div>
+                <div className="text-xs font-sans uppercase tracking-[0.15em] text-primary-foreground/50 mt-1">European Industrial Group</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="section-padding py-20 md:py-28 bg-warm-white">
-        <div className="section-container text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-semibold text-primary leading-tight max-w-2xl mx-auto">
-            Ready to explore the Iranian market with confidence?
-          </h2>
-          <p className="mt-4 text-base font-sans text-muted-foreground max-w-lg mx-auto">
-            Tell us about your objectives. We'll share how we can help — and whether we're the right fit.
-          </p>
-          <div className="mt-10">
-            <Link to="/contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3.5 text-sm font-sans font-medium tracking-wide hover:bg-navy-light transition-colors">
-              Get in Touch <ArrowRight className="w-4 h-4" />
-            </Link>
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7">
+              <span className="section-label">Initial Conversation</span>
+              <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-serif font-semibold text-primary leading-tight">
+                Discreet, considered, and without obligation.
+              </h2>
+              <p className="mt-5 text-base font-sans text-muted-foreground max-w-xl leading-relaxed">
+                Tell us about your objectives. We'll share how we can help — and whether we're the right fit. Initial conversations are confidential and complimentary.
+              </p>
+            </div>
+            <div className="lg:col-span-5 lg:border-l lg:border-border lg:pl-12">
+              <Link to="/contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 text-sm font-sans font-medium tracking-[0.1em] uppercase hover:bg-navy-light transition-colors w-full justify-center">
+                Request a Consultation <ArrowRight className="w-4 h-4" />
+              </Link>
+              <p className="mt-4 text-xs font-sans text-muted-foreground text-center tracking-wide">
+                Typical response within one business day.
+              </p>
+            </div>
           </div>
         </div>
       </section>
