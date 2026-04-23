@@ -98,6 +98,39 @@ const principles = [
   { icon: FileText, title: "Written, not whispered", text: "Findings, recommendations, and risks documented clearly — built for board-level use." },
 ];
 
+const clientTypes = [
+  { icon: Globe, label: "Foreign Investors" },
+  { icon: Building2, label: "Expansion Teams" },
+  { icon: Wallet, label: "Family Offices" },
+  { icon: Cpu, label: "SaaS & Tech Companies" },
+  { icon: Ship, label: "Trade & Export Businesses" },
+  { icon: Landmark, label: "Regional Operators" },
+];
+
+const engagements = [
+  {
+    tag: "Technology · IT Outsourcing",
+    client: "European Technology Firm",
+    challenge: "Assessing the feasibility of routing software development work through Iran.",
+    work: "Capability mapping, pricing benchmark, and risk overview across three candidate cities.",
+    outcome: "Structured go/no-go report delivered in four weeks, enabling a clear board decision.",
+  },
+  {
+    tag: "Agriculture · Cross-Border Trade",
+    client: "Russian Agricultural Exporter",
+    challenge: "Identifying qualified buyers in Iran for lentil and grain volumes.",
+    work: "Buyer research, shortlisting, meeting setup, and in-country visit coordination.",
+    outcome: "Three qualified buyer meetings held; a recurring trade relationship initiated.",
+  },
+  {
+    tag: "Real Estate · Investment",
+    client: "UAE-Based Private Investor",
+    challenge: "Understanding pricing, regulation and exit dynamics in the Iranian property market.",
+    work: "Market briefing, regional pricing research, and opportunity mapping across two corridors.",
+    outcome: "Executive market report delivered within 14 days; investment thesis sharpened.",
+  },
+];
+
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
