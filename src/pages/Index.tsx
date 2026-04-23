@@ -12,6 +12,10 @@ import heroShipping from "@/assets/hero-shipping.jpg";
 import insightTehran from "@/assets/insight-tehran.jpg";
 import insightHandshake from "@/assets/insight-handshake.jpg";
 import insightDesk from "@/assets/insight-desk.jpg";
+import teamFounder from "@/assets/team-founder.jpg";
+import teamPartner2 from "@/assets/team-partner-2.jpg";
+import teamPartner3 from "@/assets/team-partner-3.jpg";
+import teamPartner4 from "@/assets/team-partner-4.jpg";
 
 const heroSlides = [
   { image: heroBazaar, alt: "Iranian bazaar and local commerce" },
@@ -128,6 +132,37 @@ const engagements = [
     challenge: "Understanding pricing, regulation and exit dynamics in the Iranian property market.",
     work: "Market briefing, regional pricing research, and opportunity mapping across two corridors.",
     outcome: "Executive market report delivered within 14 days; investment thesis sharpened.",
+  },
+];
+
+const team = [
+  {
+    name: "Arad Mostafavi",
+    role: "Founding Partner",
+    bio: "Two decades advising international companies on entry, partnerships, and operations across Iran and the wider region.",
+    based: "Tehran · Dubai",
+    image: teamFounder,
+  },
+  {
+    name: "Leila Hosseini",
+    role: "Partner, Market Strategy",
+    bio: "Former corporate strategy lead. Heads our research practice and oversees mandates in consumer, industrial, and trade.",
+    based: "Tehran",
+    image: teamPartner2,
+  },
+  {
+    name: "Daniel Kaveh",
+    role: "Partner, Cross-Border",
+    bio: "Background in international banking and structured trade. Leads engagements involving payments, logistics, and compliance navigation.",
+    based: "Dubai · London",
+    image: teamPartner3,
+  },
+  {
+    name: "Mahnaz Sarrafi",
+    role: "Senior Advisor",
+    bio: "Decades inside Iranian institutional and family-business networks. Provides counsel on partner selection and stakeholder mapping.",
+    based: "Tehran · Isfahan",
+    image: teamPartner4,
   },
 ];
 
