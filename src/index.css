@@ -6,50 +6,52 @@
 
 @layer base {
   :root {
-    /* Deep navy palette */
-    --background: 40 33% 96%;
-    --foreground: 216 50% 11%;
+    /* Refined neutral-stone palette — calmer, cooler, less pink */
+    --background: 36 18% 96%;
+    --foreground: 216 45% 12%;
 
-    --card: 40 25% 97%;
-    --card-foreground: 216 50% 11%;
+    --card: 36 16% 97%;
+    --card-foreground: 216 45% 12%;
 
-    --popover: 40 33% 96%;
-    --popover-foreground: 216 50% 11%;
+    --popover: 36 18% 96%;
+    --popover-foreground: 216 45% 12%;
 
-    /* Deep navy */
-    --primary: 216 50% 11%;
-    --primary-foreground: 40 33% 96%;
+    /* Deep navy (slightly softened) */
+    --primary: 216 45% 13%;
+    --primary-foreground: 36 18% 96%;
 
-    /* Warm sand */
-    --secondary: 34 30% 64%;
-    --secondary-foreground: 216 50% 11%;
+    /* Warm sand — muted, less saturated */
+    --secondary: 32 22% 58%;
+    --secondary-foreground: 216 45% 13%;
 
-    /* Cream */
-    --muted: 38 25% 90%;
-    --muted-foreground: 216 20% 46%;
+    /* Stone neutrals */
+    --muted: 36 12% 92%;
+    --muted-foreground: 216 14% 42%;
 
-    --accent: 34 30% 64%;
-    --accent-foreground: 216 50% 11%;
+    --accent: 32 22% 58%;
+    --accent-foreground: 216 45% 13%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 36 20% 85%;
-    --input: 36 20% 85%;
-    --ring: 216 50% 11%;
+    --border: 36 10% 88%;
+    --input: 36 10% 88%;
+    --ring: 216 45% 13%;
 
     --radius: 0.25rem;
 
     /* Custom tokens */
-    --navy: 216 50% 11%;
-    --navy-light: 216 35% 22%;
-    --navy-muted: 216 25% 35%;
-    --sand: 34 30% 64%;
-    --sand-light: 38 30% 82%;
-    --cream: 40 33% 96%;
-    --cream-dark: 38 25% 90%;
-    --warm-white: 40 40% 98%;
-    --charcoal: 216 15% 25%;
+    --navy: 216 45% 13%;
+    --navy-light: 216 32% 22%;
+    --navy-muted: 216 20% 36%;
+    --sand: 32 22% 58%;
+    --sand-light: 34 20% 78%;
+    --cream: 36 18% 96%;
+    --cream-dark: 36 10% 93%;
+    --stone: 30 8% 90%;
+    --stone-light: 32 12% 95%;
+    --warm-white: 36 22% 98%;
+    --charcoal: 216 14% 24%;
 
     --sidebar-background: 216 50% 11%;
     --sidebar-foreground: 40 33% 96%;
