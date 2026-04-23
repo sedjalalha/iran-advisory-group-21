@@ -552,7 +552,7 @@ const Index = () => {
                 Three commitments that shape every engagement we accept.
               </p>
             </div>
-            <div className="lg:col-span-8 space-y-px bg-border">
+            <div className="lg:col-span-8 border-t border-border">
               {principles.map((p, i) => (
                 <motion.div
                   key={p.title}
@@ -560,7 +560,7 @@ const Index = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="bg-warm-white p-8 md:p-10 flex gap-6 items-start"
+                  className="border-b border-border py-8 md:py-10 flex gap-6 items-start"
                 >
                   <p.icon className="w-5 h-5 text-sand flex-shrink-0 mt-1" strokeWidth={1.5} />
                   <div>
