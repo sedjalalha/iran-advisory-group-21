@@ -311,19 +311,20 @@ const Index = () => {
       {/* In-Country Presence — Map-style */}
       <section className="section-padding py-20 md:py-28 bg-cream-dark">
         <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-10">
             <div className="lg:col-span-5">
               <span className="section-label">In-Country Reach</span>
               <h2 className="mt-4 text-3xl md:text-4xl font-serif font-semibold text-primary leading-tight">
-                Six cities. One coordinated team.
+                Nationwide presence, coordinated centrally.
               </h2>
             </div>
             <div className="lg:col-span-7">
               <p className="text-base font-sans text-charcoal leading-relaxed">
-                Our team operates from Tehran with established working relationships across Iran's major commercial centres. Whether you need a vendor visited in Isfahan, a port assessed in Bandar Abbas, or a contract signed in Tabriz — we are present where the work happens.
+                Our core team operates from Tehran, with trusted working relationships extending across every major Iranian commercial centre — and the wider provincial network that real execution often demands. The cities below are a sample of where we are most active; in practice, our reach covers the country.
               </p>
             </div>
           </div>
+          <p className="section-label mb-6 text-sand">Selected Operating Cities</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {presence.map((p, i) => (
               <motion.div
