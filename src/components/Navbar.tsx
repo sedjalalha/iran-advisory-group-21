@@ -1,7 +1,16 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackEvent } from "@/lib/analytics";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { CALENDLY_URL } from "@/lib/contact-links";
 
 interface NavItem {
   label: string;
@@ -51,6 +60,8 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [consultationMenuOpen, setConsultationMenuOpen] = useState(false);
+  const [consultationSource, setConsultationSource] = useState<"navbar_desktop" | "navbar_mobile">("navbar_desktop");
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const location = useLocation();
 
@@ -66,6 +77,40 @@ const Navbar = () => {
 
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => setActiveDropdown(null), 150);
+  };
+
+  const trackConsultationClick = (source: "navbar_desktop" | "navbar_mobile") => {
+    sessionStorage.setItem("consultation_source", source);
+    trackEvent("consultation_cta_click", {
+      source,
+      page_path: location.pathname,
+    });
+  };
+
+  const openConsultationMenu = (source: "navbar_desktop" | "navbar_mobile") => {
+    trackConsultationClick(source);
+    setConsultationSource(source);
+    setConsultationMenuOpen(true);
+    trackEvent("consultation_options_opened", {
+      source,
+      page_path: location.pathname,
+    });
+  };
+
+  const handleFormPathSelected = () => {
+    trackEvent("consultation_path_selected", {
+      source: consultationSource,
+      path: "form",
+    });
+    setConsultationMenuOpen(false);
+  };
+
+  const handleCallPathSelected = () => {
+    trackEvent("consultation_path_selected", {
+      source: consultationSource,
+      path: "request_call_calendly",
+    });
+    setConsultationMenuOpen(false);
   };
 
   return (
@@ -138,12 +183,13 @@ const Navbar = () => {
                 </AnimatePresence>
               </div>
             ))}
-            <Link
-              to="/contact"
+            <button
+              type="button"
+              onClick={() => openConsultationMenu("navbar_desktop")}
               className="ml-2 inline-flex items-center px-5 py-2.5 bg-primary text-primary-foreground text-xs font-sans font-medium tracking-[0.1em] uppercase hover:bg-navy-light transition-colors"
             >
               Request a Consultation
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Toggle */}
@@ -211,17 +257,65 @@ const Navbar = () => {
                 </div>
               ))}
               <div className="pt-4 mt-2 border-t border-border">
-                <Link
-                  to="/contact"
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileOpen(false);
+                    openConsultationMenu("navbar_mobile");
+                  }}
                   className="block w-full text-center px-5 py-3 bg-primary text-primary-foreground text-xs font-sans font-medium tracking-[0.1em] uppercase hover:bg-navy-light transition-colors"
                 >
                   Request a Consultation
-                </Link>
+                </button>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <Dialog open={consultationMenuOpen} onOpenChange={setConsultationMenuOpen}>
+        <DialogContent className="sm:max-w-xl bg-warm-white border-border p-8">
+          <DialogHeader className="space-y-3 text-left">
+            <DialogTitle className="text-2xl font-serif font-semibold text-primary">
+              Choose your preferred next step
+            </DialogTitle>
+            <DialogDescription className="text-sm font-sans text-muted-foreground leading-relaxed">
+              Share your brief through our form, or request a direct call via Calendly.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="mt-3 grid gap-4">
+            <Link
+              to={`/contact?source=${consultationSource}_form`}
+              onClick={handleFormPathSelected}
+              className="group block border border-border bg-warm-white p-5 transition-colors hover:border-sand"
+            >
+              <div className="text-xs font-sans uppercase tracking-[0.18em] text-muted-foreground">Consultation Form</div>
+              <div className="mt-2 text-lg font-serif font-semibold text-primary">Fill the inquiry form</div>
+              <p className="mt-2 text-sm font-sans text-muted-foreground">
+                Best for detailed requests and scoped mandates.
+              </p>
+            </Link>
+
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noreferrer"
+              onClick={handleCallPathSelected}
+              className="group block border border-border bg-warm-white p-5 transition-colors hover:border-sand"
+            >
+              <div className="text-xs font-sans uppercase tracking-[0.18em] text-muted-foreground">Request a Call</div>
+              <div className="mt-2 flex items-center gap-2 text-lg font-serif font-semibold text-primary">
+                Schedule via Calendly
+                <ArrowUpRight className="h-4 w-4" />
+              </div>
+              <p className="mt-2 text-sm font-sans text-muted-foreground">
+                Pick a suitable time instantly with no back-and-forth.
+              </p>
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
     </nav>
   );
 };

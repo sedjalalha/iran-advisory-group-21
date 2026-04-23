@@ -1,6 +1,10 @@
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, MapPin, Phone, Lock, Clock, FileText } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { trackEvent } from "@/lib/analytics";
+import { CALENDLY_URL } from "@/lib/contact-links";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -23,6 +27,73 @@ const offices = [
 ];
 
 const Contact = () => {
+  const location = useLocation();
+  const formStartedRef = useRef(false);
+  const submittedRef = useRef(false);
+  const abandonTrackedRef = useRef(false);
+  const completedFieldsRef = useRef(new Set<string>());
+  const lastTouchedFieldRef = useRef<string | null>(null);
+  const pageEnterTimeRef = useRef(Date.now());
+  const source =
+    new URLSearchParams(location.search).get("source") ||
+    sessionStorage.getItem("consultation_source") ||
+    "direct";
+
+  const emitAbandonIfNeeded = (reason: "route_change" | "page_unload") => {
+    if (!formStartedRef.current || submittedRef.current || abandonTrackedRef.current) return;
+
+    abandonTrackedRef.current = true;
+    trackEvent("consultation_form_abandoned", {
+      source,
+      reason,
+      completed_fields: completedFieldsRef.current.size,
+      last_field: lastTouchedFieldRef.current || "unknown",
+      time_on_page_seconds: Math.round((Date.now() - pageEnterTimeRef.current) / 1000),
+    });
+  };
+
+  const handleFormStart = (fieldName: string) => {
+    lastTouchedFieldRef.current = fieldName;
+    if (formStartedRef.current) return;
+
+    formStartedRef.current = true;
+    trackEvent("consultation_form_started", {
+      source,
+      first_field: fieldName,
+    });
+  };
+
+  const handleFieldCompleted = (fieldName: string, value: string) => {
+    lastTouchedFieldRef.current = fieldName;
+    if (!value.trim() || completedFieldsRef.current.has(fieldName)) return;
+
+    completedFieldsRef.current.add(fieldName);
+    trackEvent("consultation_field_completed", {
+      source,
+      field: fieldName,
+      completed_fields: completedFieldsRef.current.size,
+    });
+  };
+
+  useEffect(() => {
+    trackEvent("consultation_page_viewed", {
+      source,
+      page_path: location.pathname,
+    });
+  }, [location.pathname, source]);
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      emitAbandonIfNeeded("page_unload");
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      emitAbandonIfNeeded("route_change");
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
   return (
     <Layout>
       {/* Hero */}
@@ -114,31 +185,91 @@ const Contact = () => {
                 <p className="text-sm font-sans text-muted-foreground leading-relaxed">
                   A brief overview is enough to start. A senior member of our team will respond within one business day.
                 </p>
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() =>
+                    trackEvent("consultation_path_selected", {
+                      source,
+                      path: "request_call_calendly",
+                    })
+                  }
+                  className="mt-5 inline-flex items-center gap-2 border border-border px-5 py-3 text-xs font-sans font-medium tracking-[0.1em] uppercase text-primary hover:border-sand hover:text-navy-light transition-colors"
+                >
+                  Request a Call (Calendly) <ArrowRight className="w-4 h-4" />
+                </a>
               </div>
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form
+                className="space-y-6"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  submittedRef.current = true;
+                  trackEvent("consultation_form_submit_clicked", {
+                    source,
+                    completed_fields: completedFieldsRef.current.size,
+                    time_on_page_seconds: Math.round((Date.now() - pageEnterTimeRef.current) / 1000),
+                  });
+                }}
+              >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground block mb-2">Full Name</label>
-                    <input type="text" required className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all" placeholder="Your name" />
+                    <input
+                      name="full_name"
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all"
+                      placeholder="Your name"
+                      onFocus={() => handleFormStart("full_name")}
+                      onBlur={(e) => handleFieldCompleted("full_name", e.currentTarget.value)}
+                    />
                   </div>
                   <div>
                     <label className="text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground block mb-2">Company</label>
-                    <input type="text" className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all" placeholder="Your organization" />
+                    <input
+                      name="company"
+                      type="text"
+                      className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all"
+                      placeholder="Your organization"
+                      onFocus={() => handleFormStart("company")}
+                      onBlur={(e) => handleFieldCompleted("company", e.currentTarget.value)}
+                    />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground block mb-2">Email Address</label>
-                    <input type="email" required className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all" placeholder="your@email.com" />
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all"
+                      placeholder="your@email.com"
+                      onFocus={() => handleFormStart("email")}
+                      onBlur={(e) => handleFieldCompleted("email", e.currentTarget.value)}
+                    />
                   </div>
                   <div>
                     <label className="text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground block mb-2">Country / Location</label>
-                    <input type="text" className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all" placeholder="Where you're based" />
+                    <input
+                      name="country_location"
+                      type="text"
+                      className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all"
+                      placeholder="Where you're based"
+                      onFocus={() => handleFormStart("country_location")}
+                      onBlur={(e) => handleFieldCompleted("country_location", e.currentTarget.value)}
+                    />
                   </div>
                 </div>
                 <div>
                   <label className="text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground block mb-2">Area of Interest</label>
-                  <select className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary focus:outline-none focus:ring-1 focus:ring-sand transition-all">
+                  <select
+                    name="area_of_interest"
+                    className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary focus:outline-none focus:ring-1 focus:ring-sand transition-all"
+                    onFocus={() => handleFormStart("area_of_interest")}
+                    onChange={(e) => handleFieldCompleted("area_of_interest", e.currentTarget.value)}
+                  >
                     <option value="">Select an area</option>
                     <option value="market-intelligence">Market Intelligence</option>
                     <option value="market-entry">Market Entry</option>
@@ -150,7 +281,14 @@ const Contact = () => {
                 </div>
                 <div>
                   <label className="text-[10px] font-sans uppercase tracking-[0.2em] text-muted-foreground block mb-2">A Few Words on Your Inquiry</label>
-                  <textarea rows={5} className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all resize-none" placeholder="Briefly describe your objectives and how we might be of assistance." />
+                  <textarea
+                    name="inquiry_summary"
+                    rows={5}
+                    className="w-full px-4 py-3 bg-stone-light border-0 text-sm font-sans text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-sand transition-all resize-none"
+                    placeholder="Briefly describe your objectives and how we might be of assistance."
+                    onFocus={() => handleFormStart("inquiry_summary")}
+                    onBlur={(e) => handleFieldCompleted("inquiry_summary", e.currentTarget.value)}
+                  />
                 </div>
                 <div className="pt-2">
                   <button type="submit" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 text-sm font-sans font-medium tracking-[0.1em] uppercase hover:bg-navy-light transition-colors">
