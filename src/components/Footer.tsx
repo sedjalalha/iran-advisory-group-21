@@ -47,7 +47,7 @@ const Footer = () => {
                 <li><Link to="/insights" className="text-sm font-sans text-primary-foreground/60 hover:text-sand transition-colors">Insights</Link></li>
               </ul>
               <div className="mt-8">
-                <p className="text-xs font-sans text-primary-foreground/40">Dubai · Tehran · London</p>
+                <p className="text-xs font-sans text-primary-foreground/40">Tehran · Muscat · Turin</p>
               </div>
             </div>
           </div>
