@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, MapPin, Shield, Users, Briefcase, Globe, Search, Lock, Compass, FileText, Building2, Wallet, Cpu, Ship, Landmark, MessageSquare, ClipboardList, Rocket, HandshakeIcon } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MapPin, Shield, Users, Briefcase, Globe, Search, Lock, Compass, FileText, Building2, Wallet, Cpu, Ship, Landmark, MessageSquare, ClipboardList, Rocket, Handshake } from "lucide-react";
 import Layout from "@/components/Layout";
 import AnimatedCounter from "@/components/visual/AnimatedCounter";
 import ParallaxBand from "@/components/visual/ParallaxBand";
@@ -78,7 +78,7 @@ const process = [
   { num: "01", title: "Listen", description: "A confidential conversation to understand your objectives, constraints, and the questions you actually need answered.", icon: MessageSquare },
   { num: "02", title: "Scope", description: "A clear written proposal — defined deliverables, timelines, and a fixed scope. No open-ended retainers.", icon: ClipboardList, duration: "1–2 weeks" },
   { num: "03", title: "Deliver", description: "Structured execution from our cross-border team, with weekly visibility and direct partner-level engagement.", icon: Rocket, duration: "4–16 weeks" },
-  { num: "04", title: "Stay alongside", description: "Optional ongoing local coordination once the initial mandate concludes — for follow-through that matters.", icon: HandshakeIcon, duration: "Optional" },
+  { num: "04", title: "Stay alongside", description: "Optional ongoing local coordination once the initial mandate concludes — for follow-through that matters.", icon: Handshake, duration: "Optional" },
 ];
 
 const insights = [
